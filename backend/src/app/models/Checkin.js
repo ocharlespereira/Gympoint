@@ -1,12 +1,9 @@
-import Sequelize, { Model } from 'sequelize';
+import { Model } from 'sequelize';
 
 class Checkin extends Model {
   static init(sequelize) {
     super.init(
-      {
-        // student_id: Sequelize.INTEGER,
-        // entry_date: Sequelize.DATE,
-      },
+      {},
       {
         sequelize,
       }

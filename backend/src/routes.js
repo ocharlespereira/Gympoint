@@ -11,19 +11,14 @@ import PlanController from './app/controllers/PlanController';
 import RegistrationController from './app/controllers/RegistrationController';
 import CheckinController from './app/controllers/CheckinController';
 
-// import NotificationController from './app/controllers/NotificationController';
-
 import authMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
 const upload = multer(multerConfig);
 
-<<<<<<< HEAD
 routes.get('/students/:studentId/checkins', CheckinController.index);
 routes.post('/students/:studentId/checkins', CheckinController.store);
 
-=======
->>>>>>> origin/master
 // Account
 routes.post('/sessions', SessionController.store);
 
@@ -32,11 +27,7 @@ routes.post('/sessions', SessionController.store);
  */
 routes.use(authMiddleware);
 
-<<<<<<< HEAD
 // User
-=======
-//User
->>>>>>> origin/master
 routes.get('/users', UserController.index);
 routes.post('/users', UserController.store);
 routes.put('/users', UserController.update);
@@ -58,13 +49,7 @@ routes.delete('/plans/:id', PlanController.delete);
 // Registration
 routes.get('/registrations', RegistrationController.index);
 routes.post('/registrations', RegistrationController.store);
+routes.put('/registrations/:id', RegistrationController.update);
 routes.delete('/registrations/:id', RegistrationController.delete);
 
-<<<<<<< HEAD
-=======
-// Checkins
-routes.get('/students/:studentId/checkins', CheckinController.index);
-routes.post('/students/:studentId/checkins', CheckinController.store);
-
->>>>>>> origin/master
 export default routes;
