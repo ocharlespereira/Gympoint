@@ -10,8 +10,10 @@ import Student from '../models/Student';
 
 class RegistrationController {
   async index(req, res) {
+	// Pagination
     const { page = 1 } = req.query;
-
+	
+	// What will appear on Json
     const registration = await Registration.findAll({
       attributes: [
         'id',
@@ -68,11 +70,12 @@ class RegistrationController {
     if (!plan) {
       return res.status(400).json({ error: 'Plan not found' });
     }
-
+	
+	// validates end date according to start date and calculates price
     const start_date = startOfHour(parseISO(req.body.start_date));
     const end_date = addMonths(start_date, plan.duration);
     const total_price = plan.price * plan.duration;
-
+	
     const registration = await Registration.create({
       user_id,
       student_id,
@@ -85,6 +88,7 @@ class RegistrationController {
     /**
      * Notify registration student
      */
+<<<<<<< HEAD
     // const user = await User.findByPk(user_id);
 
     // const formatedDate = format(
@@ -97,6 +101,21 @@ class RegistrationController {
     //   content: `Novo agendamento de ${user.name} para ${formatedDate}`,
     //   user: user_id,
     // });
+=======
+    const user = await User.findByPk(user_id);
+
+    const formatedDate = format(
+      start_date,
+      "'dia' dd 'de' MMMM', às' H:mm'h às' yyyy",
+      { locale: pt }
+    );
+
+	// registration email
+    await Notification.create({
+      content: `Novo agendamento de ${user.name} para ${formatedDate}`,
+      user: user_id,
+    });
+>>>>>>> origin/master
 
     return res.json(registration);
   }
@@ -128,9 +147,9 @@ class RegistrationController {
         },
       ],
     });
-
+	
+	// to keep track this will just be canceled
     registration.canceled_at = new Date();
-
     await registration.save();
 
     return res.json(registration);

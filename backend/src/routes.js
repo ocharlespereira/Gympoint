@@ -18,9 +18,12 @@ import authMiddleware from './app/middlewares/auth';
 const routes = new Router();
 const upload = multer(multerConfig);
 
+<<<<<<< HEAD
 routes.get('/students/:studentId/checkins', CheckinController.index);
 routes.post('/students/:studentId/checkins', CheckinController.store);
 
+=======
+>>>>>>> origin/master
 // Account
 routes.post('/sessions', SessionController.store);
 
@@ -29,7 +32,11 @@ routes.post('/sessions', SessionController.store);
  */
 routes.use(authMiddleware);
 
+<<<<<<< HEAD
 // User
+=======
+//User
+>>>>>>> origin/master
 routes.get('/users', UserController.index);
 routes.post('/users', UserController.store);
 routes.put('/users', UserController.update);
@@ -53,4 +60,11 @@ routes.get('/registrations', RegistrationController.index);
 routes.post('/registrations', RegistrationController.store);
 routes.delete('/registrations/:id', RegistrationController.delete);
 
+<<<<<<< HEAD
+=======
+// Checkins
+routes.get('/students/:studentId/checkins', CheckinController.index);
+routes.post('/students/:studentId/checkins', CheckinController.store);
+
+>>>>>>> origin/master
 export default routes;
