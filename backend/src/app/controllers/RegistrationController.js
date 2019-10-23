@@ -1,7 +1,7 @@
-import { addMonths, parseISO, startOfHour, format } from 'date-fns';
-import pt from 'date-fns/locale';
+import { addMonths, parseISO, startOfHour } from 'date-fns';
+// import pt from 'date-fns/locale';
 import * as Yup from 'yup';
-import Notification from '../schemas/Notification';
+// import Notification from '../schemas/Notification';
 
 import Registration from '../models/Registration';
 import User from '../models/User';
@@ -85,18 +85,18 @@ class RegistrationController {
     /**
      * Notify registration student
      */
-    const user = await User.findByPk(user_id);
+    // const user = await User.findByPk(user_id);
 
-    const formatedDate = format(
-      start_date,
-      "'dia' dd 'de' MMMM', às' H:mm'h às' yyyy",
-      { locale: pt }
-    );
+    // const formatedDate = format(
+    //   start_date,
+    //   "'dia' dd 'de' MMMM', às' H:mm'h às' yyyy",
+    //   { locale: pt }
+    // );
 
-    await Notification.create({
-      content: `Novo agendamento de ${user.name} para ${formatedDate}`,
-      user: user_id,
-    });
+    // await Notification.create({
+    //   content: `Novo agendamento de ${user.name} para ${formatedDate}`,
+    //   user: user_id,
+    // });
 
     return res.json(registration);
   }

@@ -4,8 +4,8 @@ class Checkin extends Model {
   static init(sequelize) {
     super.init(
       {
-        student_id: Sequelize.INTEGER,
-        entry_date: Sequelize.DATE,
+        // student_id: Sequelize.INTEGER,
+        // entry_date: Sequelize.DATE,
       },
       {
         sequelize,
