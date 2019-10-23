@@ -4,6 +4,7 @@ class Checkin extends Model {
   static init(sequelize) {
     super.init(
       {
+        student_id: Sequelize.INTEGER,
         entry_date: Sequelize.DATE,
       },
       {
@@ -16,7 +17,7 @@ class Checkin extends Model {
 
   static associate(models) {
     this.belongsTo(models.Student, {
-      foreignKey: 'student',
+      foreignKey: 'student_id',
       as: 'studentCheckVinc',
     });
   }

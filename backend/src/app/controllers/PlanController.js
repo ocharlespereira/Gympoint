@@ -44,24 +44,20 @@ class PlanController {
   }
 
   async delete(req, res) {
-    const { id } = req.params;
-
-    const planId = await Plan.findByPk(id);
-
-    if (planId.user_id !== req.userId) {
-      return res.status(401).json({
-        error: "You don't have permission to cancel this Plan.",
-      });
-    }
-
-    const { title, duration, price } = await planId.delete(req.body);
-
-    return res.json({
-      id,
-      title,
-      duration,
-      price,
+    const plan = await Plan.findByPk(req.params.id, {
+      attributes: ['id', 'title', 'duration', 'price'],
+      include: [
+        {
+          model: User,
+          as: 'userVincPlan',
+          attributes: ['id', 'name'],
+        },
+      ],
     });
+
+    await plan.destroy();
+
+    return res.json(plan);
   }
 }
 export default new PlanController();

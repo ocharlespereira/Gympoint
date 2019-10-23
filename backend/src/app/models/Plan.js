@@ -4,6 +4,7 @@ class Plan extends Model {
   static init(sequelize) {
     super.init(
       {
+        user_id: Sequelize.INTEGER,
         title: Sequelize.STRING,
         duration: Sequelize.INTEGER,
         price: Sequelize.DOUBLE,
@@ -17,7 +18,7 @@ class Plan extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.User, { foreignKey: 'id', as: 'userVincPlan' });
+    this.belongsTo(models.User, { foreignKey: 'user_id', as: 'userVincPlan' });
   }
 }
 
