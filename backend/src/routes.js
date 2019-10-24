@@ -10,17 +10,23 @@ import FileController from './app/controllers/Filecontroller';
 import PlanController from './app/controllers/PlanController';
 import RegistrationController from './app/controllers/RegistrationController';
 import CheckinController from './app/controllers/CheckinController';
+import HelpOrderController from './app/controllers/HelpOrderController';
 
 import authMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
 const upload = multer(multerConfig);
 
+// Account
+routes.post('/sessions', SessionController.store);
+
+// Checkins
 routes.get('/students/:studentId/checkins', CheckinController.index);
 routes.post('/students/:studentId/checkins', CheckinController.store);
 
-// Account
-routes.post('/sessions', SessionController.store);
+// Help Orders
+routes.get('/students/:studentId/help-orders', HelpOrderController.index);
+routes.post('/students/:studentId/help-orders', HelpOrderController.store);
 
 /**
  * Private routes (need jwt)
