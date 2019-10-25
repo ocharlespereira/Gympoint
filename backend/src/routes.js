@@ -41,7 +41,7 @@ routes.put('/users', UserController.update);
 // Student
 routes.get('/students', StudentController.index);
 routes.post('/create', StudentController.store);
-routes.put('/editStudents/:id', StudentController.update);
+routes.put('/students/:id', StudentController.update);
 
 // File Image
 routes.post('/files', upload.single('file'), FileController.store);
