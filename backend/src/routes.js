@@ -65,4 +65,5 @@ routes.put('/help-orders/:helpOrderId/answer', AnswerController.update);
 
 // Questions not respond
 routes.get('/students/help-orders/available', AvailableController.index);
+
 export default routes;
