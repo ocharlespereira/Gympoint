@@ -33,6 +33,7 @@ routes.post('/students/:studentId/help-orders', HelpOrderController.store);
 /**
  * Private routes (need jwt)
  */
+
 routes.use(authMiddleware);
 
 // User

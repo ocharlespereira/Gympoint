@@ -2,6 +2,9 @@ import { addMonths, parseISO, startOfHour } from 'date-fns';
 
 import * as Yup from 'yup';
 
+import NewRegistrationMail from '../jobs/NewRegistrationMail';
+import Queue from '../../lib/Queue';
+
 import Registration from '../models/Registration';
 import User from '../models/User';
 import Plan from '../models/Plan';
@@ -85,10 +88,15 @@ class RegistrationController {
     });
 
     /**
-     * Notify registration student
+     * Notify registration student email
      */
 
-    // registration email
+    await Queue.add(NewRegistrationMail.key, {
+      student: student.studentVinc.id,
+      start_date,
+      end_date,
+      total_price,
+    });
 
     return res.json(registration);
   }
