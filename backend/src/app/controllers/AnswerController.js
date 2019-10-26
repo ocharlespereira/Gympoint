@@ -7,7 +7,7 @@ import HelpOrder from '../models/HelpOrder';
 // import Student from '../models/Student';
 
 class AnswerController {
-  async put(req, res) {
+  async update(req, res) {
     const { helpOrderId } = req.params;
 
     if (!helpOrderId) {
