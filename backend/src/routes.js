@@ -12,6 +12,7 @@ import RegistrationController from './app/controllers/RegistrationController';
 import CheckinController from './app/controllers/CheckinController';
 import HelpOrderController from './app/controllers/HelpOrderController';
 import AnswerController from './app/controllers/AnswerController';
+import AvailableController from './app/controllers/AvailableController';
 
 import authMiddleware from './app/middlewares/auth';
 
@@ -62,4 +63,6 @@ routes.delete('/registrations/:id', RegistrationController.delete);
 // Answer Respond
 routes.put('/help-orders/:helpOrderId/answer', AnswerController.update);
 
+// Questions not respond
+routes.get('/students/help-orders/available', AvailableController.index);
 export default routes;
