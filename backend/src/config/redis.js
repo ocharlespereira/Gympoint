@@ -1,4 +1,4 @@
 export default {
-  host: process.env.REDIS_HOST,
+  host: '172.17.0.2', // não intendi o porque desta rota!!!!
   port: process.env.REDIS_PORT,
 };
