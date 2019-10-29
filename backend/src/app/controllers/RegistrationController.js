@@ -61,9 +61,9 @@ class RegistrationController {
 
     const { user_id, student_id, plan_id } = req.body;
 
-    const student = await Student.findByPk(student_id);
+    const studentExist = await Student.findByPk(student_id);
 
-    if (!student) {
+    if (!studentExist) {
       return res.status(400).json({ error: 'Student not found' });
     }
 
@@ -92,7 +92,7 @@ class RegistrationController {
      */
 
     await Queue.add(NewRegistrationMail.key, {
-      student: student.studentVinc.id,
+      student: studentExist,
       start_date,
       end_date,
       total_price,

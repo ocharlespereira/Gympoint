@@ -10,8 +10,11 @@ class NewRegistrationMail {
 
   async handle({ data }) {
     const { student, end_date, total_price, start_date } = data;
+
+    // console.log('A fila executou!');
+
     /**
-     * Plano, data de término, valor e boas vindas
+     * Plano, data Inicio, termino, valor e boas vindas
      */
 
     await Mail.sendMail({
@@ -19,16 +22,22 @@ class NewRegistrationMail {
       subject: 'Matrícula realizada com sucesso!',
       template: 'new-registration-mail',
       context: {
-        user: student.name,
-        start_date,
-        end_date: format(
-          parseISO(end_date),
-          "'dia' dd 'de' MMMM', às' H:mm'h'",
+        userName: student.name,
+        startDate: format(
+          parseISO(start_date),
+          "'dia' dd 'de' MMMM', às' H:mm'h' 'de' yyyy'.'",
           {
             locale: pt,
           }
         ),
-        total_price,
+        endDate: format(
+          parseISO(end_date),
+          "'dia' dd 'de' MMMM', às' H:mm'h' 'de' yyyy'.'",
+          {
+            locale: pt,
+          }
+        ),
+        totalPrice: total_price,
       },
     });
   }
