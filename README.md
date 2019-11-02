@@ -1,9 +1,3 @@
-[] Corrigir erro no delete do PlanController
-[x] Corrigir bug da tabela Plan que foi excluida para ser adcionada novamente
-[x] Assim que corrigr a tabela Plans fazer o foreignKey entre a tabela plan e a user 
-
-======================================================================================
-
 # GymPoint
  A simple project to gym manager.
 
