@@ -7,8 +7,11 @@ class HelpOrderAnswerMail {
 
   async handle({ data }) {
     const { student, question, answer } = data;
+
     /**
      * Plano, data de término, valor e boas vindas
+     * templante chama o arquivos html da view.
+     * Obs.: não aplicar _ e nem letras uppercase no name
      */
 
     await Mail.sendMail({

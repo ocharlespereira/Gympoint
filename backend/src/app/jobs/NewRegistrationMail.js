@@ -15,6 +15,8 @@ class NewRegistrationMail {
 
     /**
      * Plano, data Inicio, termino, valor e boas vindas
+     * templante chama o arquivos html da view.
+     * Obs.: não aplicar _ e nem letras uppercase no name
      */
 
     await Mail.sendMail({
