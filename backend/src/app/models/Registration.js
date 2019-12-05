@@ -11,6 +11,19 @@ class Registration extends Model {
         end_date: Sequelize.DATE,
         total_price: Sequelize.FLOAT,
         canceled_at: Sequelize.DATE,
+
+        active: {
+          type: Sequelize.VIRTUAL(Sequelize.BOOLEAN, [
+            'start_date',
+            'end_date',
+          ]),
+          get() {
+            return (
+              isBefore(this.get('start_date'), new Date()) &&
+              isAfter(this.get('end_date'), new Date())
+            );
+          },
+        },
       },
       {
         sequelize,
@@ -28,6 +41,9 @@ class Registration extends Model {
     });
     this.belongsTo(models.Plan, { foreignKey: 'plan_id', as: 'planVinc' });
   }
+
+
+
 }
 
 export default Registration;

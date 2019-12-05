@@ -22,6 +22,7 @@ class RegistrationController {
         'start_date',
         'end_date',
         'total_price',
+        'active',
         'canceled_at',
       ],
       limit: 20,
