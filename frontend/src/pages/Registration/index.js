@@ -3,5 +3,5 @@ import React from 'react';
 // import { Container } from './styles';
 
 export default function Registration() {
-  return <div />;
+  return <h1>MATRICULAS</h1>;
 }

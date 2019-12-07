@@ -3,5 +3,5 @@ import React from 'react';
 // import { Container } from './styles';
 
 export default function Plan() {
-  return <div />;
+  return <h1>PLANOS</h1>;
 }
