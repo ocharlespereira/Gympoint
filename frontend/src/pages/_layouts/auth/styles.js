@@ -30,7 +30,7 @@ export const Content = styled.div`
     margin: 0 30px;
   }
 
-  span {
+  small {
     color: #444;
     margin: 0 0 2px;
     font-weight: bold;
@@ -45,6 +45,12 @@ export const Content = styled.div`
     margin-bottom: 15px;
     border: 1px solid #ddd;
     padding: 0 10px;
+  }
+
+  span {
+    color: #ee4d64;
+    align-self: flex-start;
+    margin: 0 1px 10px;
   }
 
   button {
