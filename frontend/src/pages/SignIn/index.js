@@ -9,7 +9,7 @@ const schema = Yup.object().shape({
     .email('Insira um email válido')
     .required('O e-mail é obrigatório'),
   password: Yup.string()
-    .min(6, 'No minímo 6 caracteres')
+    .min(6, 'No mínimo 6 caracteres')
     .required('Insira uma senha válida'),
 });
 
