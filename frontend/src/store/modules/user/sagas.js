@@ -3,28 +3,28 @@ import { toast } from 'react-toastify';
 
 import api from '~/services/api';
 
-import { updateProfileSuccess, updateProfileFailure } from './actions';
+import { updateProfileSucess, updateProfileFailure } from './actions';
 
 function* updateProfile({ payload }) {
-    try {
-        const { name, email, avatar_id, ...rest } = payload.data;
+  try {
+    const { name, email, avatar_id, ...rest } = payload.data;
 
-        const profile = {
-            name,
-            email,
-            avatar_id,
-            ...payload(rest.oldPassword ? rest : {}),
-        };
+    const profile = {
+      name,
+      email,
+      avatar_id,
+      ...payload(rest.oldPassword ? rest : {}),
+    };
 
-        const response = yield call (api.put, 'users', profile);
+    const response = yield call(api.put, 'users', profile);
 
-        toast.success('Perfil Atualizado com sucesso.');
+    toast.success('Perfil Atualizado com sucesso.');
 
-        yield put(updateProfileSuccess());
-    }catch (error) {
-        toast.error('Erro ao atualizar perfil, confira seus dados.');
-        yield put(updateProfileFailure());
-    }
+    yield put(updateProfileSucess(response.data));
+  } catch (error) {
+    toast.error('Erro ao atualizar perfil, confira seus dados.');
+    yield put(updateProfileFailure());
+  }
 }
 
 export default all([takeLatest('@user/UPDATE_PROFILE_REQUEST', updateProfile)]);
