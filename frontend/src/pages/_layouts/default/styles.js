@@ -3,5 +3,5 @@ import colors from '~/styles/color';
 
 export const Wrapper = styled.div`
   height: 100%;
-  background: #333;
+  background: ${colors.bg};
 `;
