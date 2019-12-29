@@ -9,7 +9,7 @@ import logo from '~/assets/logo.svg';
 
 const schema = Yup.object().shape({
   email: Yup.string()
-    .email('Insira um email válido')
+    .email('Insira um e-mail válido')
     .required('O e-mail é obrigatório'),
   password: Yup.string()
     .min(6, 'No mínimo 6 caracteres')
@@ -26,11 +26,11 @@ export default function SignIn() {
 
   return (
     <>
-      <img src={logo} alt="" />
+      <img src={logo} alt="GymPoint" />
 
       <Form onSubmit={handleSubmit} schema={schema}>
         <small>SEU E-MAIL</small>
-        <Input name="email" type="email" placeholder="exemplo@email.com" />
+        <Input name="email" type="email" placeholder="seu e-mail" />
 
         <small>SUA SENHA</small>
         <Input
