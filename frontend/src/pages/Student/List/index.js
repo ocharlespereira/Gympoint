@@ -69,22 +69,27 @@ export default function StudentList() {
           />
         </Controls>
       </HeaderPage>
-
       {loading ? (
         <Loading>Carregando...</Loading>
       ) : (
-          <>
-            <Table>
-              <Thead>
-                <Tr>
-                  <Th>NOME</Th>
-                  <Th>E-MAIL</Th>
-                  <Th align="center">IDADE</Th>
-                  <Th colSpan="2" />
-                </Tr>
-              </Thead>
-            </Table>
-          </>
+          <Panel>
+            {students.total === 0 ? (
+              <NoResultFound />
+            ) : (
+                <>
+                  <Table>
+                    <Thead>
+                      <Tr>
+                        <Th>NOME</Th>
+                        <Th>EMAIL</Th>
+                        <Th align="center">IDADE</Th>
+                        <Th colSpan="2" />
+                      </Tr>
+                    </Thead>
+                  </Table>
+                </>
+              )}
+          </Panel>
         )}
     </Container>
   );
