@@ -62,6 +62,11 @@ export default function StudentList() {
             <MdAdd size={24} color="#FFF" title="Adicionar Novo Aluno" />
             <span>Cadastrar</span>
           </ButtonLink>
+
+          <InputSearch
+            handleSearch={handleSearcMain}
+            placeholder="Buscar Aluno"
+          />
         </Controls>
       </HeaderPage>
     </Container>

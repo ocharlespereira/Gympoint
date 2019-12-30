@@ -13,7 +13,7 @@ export const Controls = styled.div`
     height: 36px;
     padding: 0 15px;
     color: ${colors.input};
-    margin-right: 16px;
+    margin: 0 0 0 16px;
 
     &::placeholder {
       color: ${colors.placeholder};
