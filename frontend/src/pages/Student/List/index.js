@@ -69,6 +69,23 @@ export default function StudentList() {
           />
         </Controls>
       </HeaderPage>
+
+      {loading ? (
+        <Loading>Carregando...</Loading>
+      ) : (
+          <>
+            <Table>
+              <Thead>
+                <Tr>
+                  <Th>NOME</Th>
+                  <Th>E-MAIL</Th>
+                  <Th align="center">IDADE</Th>
+                  <Th colSpan="2" />
+                </Tr>
+              </Thead>
+            </Table>
+          </>
+        )}
     </Container>
   );
 }
