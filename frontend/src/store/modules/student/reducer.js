@@ -26,15 +26,22 @@ export default function student(state = INITIAL_STATE, action) {
         break;
       }
 
+      case '@student/STUDENT_SAVE_REQUEST': {
+        draft.loading = true;
+        break;
+      }
+
       case '@student/STUDENT_SAVE_SUCCESS': {
         draft.student = action.payload.data;
         draft.loading = false;
         break;
       }
+
       case '@student/STUDENT_DELETE_REQUEST': {
         draft.loading = true;
         break;
       }
+
       case '@student/STUDENT_DELETE_SUCCESS': {
         draft.loading = false;
         draft.students.data = state.students.data.filter(
