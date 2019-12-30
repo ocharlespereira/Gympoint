@@ -27,25 +27,25 @@ export default function Header() {
 
           <ul>
             <li>
-              <Menu activeStyle={{ colors: colors.linkActive }} to="/alunos">
+              <Menu activeStyle={{ colors: colors.linkActive }} to="/students">
                 ALUNOS
               </Menu>
             </li>
             <li>
-              <Menu activeStyle={{ colors: colors.linkActive }} to="/planos">
+              <Menu activeStyle={{ colors: colors.linkActive }} to="/plan">
                 PLANOS
               </Menu>
             </li>
             <li>
               <Menu
                 activeStyle={{ colors: colors.linkActive }}
-                to="/matriculas"
+                to="/registration"
               >
                 MATRÍCULAS
               </Menu>
             </li>
             <li>
-              <Menu activeStyle={{ colors: colors.linkActive }} to="/help">
+              <Menu activeStyle={{ colors: colors.linkActive }} to="/request">
                 PEDIDO DE AUXÍLIO
               </Menu>
             </li>
