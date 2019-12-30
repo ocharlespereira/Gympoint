@@ -21,29 +21,32 @@ export default function Header() {
     <Container>
       <Content>
         <nav>
-          <Link to="/">
+          <Link to="/dashboard">
             <img src={logo} alt="Gympoint" />
           </Link>
 
           <ul>
             <li>
-              <Menu activeStyle="" to="/alunos">
+              <Menu activeStyle={{ colors: colors.linkActive }} to="/alunos">
                 ALUNOS
               </Menu>
             </li>
             <li>
-              <Menu activeStyle="" to="/alunos">
-                Alunos
+              <Menu activeStyle={{ colors: colors.linkActive }} to="/planos">
+                PLANOS
               </Menu>
             </li>
             <li>
-              <Menu activeStyle="" to="/alunos">
-                Alunos
+              <Menu
+                activeStyle={{ colors: colors.linkActive }}
+                to="/matriculas"
+              >
+                MATRÍCULAS
               </Menu>
             </li>
             <li>
-              <Menu activeStyle="" to="/alunos">
-                Alunos
+              <Menu activeStyle={{ colors: colors.linkActive }} to="/help">
+                PEDIDO DE AUXÍLIO
               </Menu>
             </li>
           </ul>
