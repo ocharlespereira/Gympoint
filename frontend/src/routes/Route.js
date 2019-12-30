@@ -10,7 +10,7 @@ import { store } from '~/store';
 
 export default function RouterWrapper({
   component: Component,
-  isPrivate = false,
+  isPrivate,
   ...rest
 }) {
   const { signed } = store.getState().auth;
