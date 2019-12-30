@@ -61,7 +61,6 @@ export default function StudentList() {
           <ButtonLink to="/alunos/new">
             <MdAdd size={24} color="#FFF" title="Adicionar Novo Aluno" />
             <span>Cadastrar</span>
-            sdfasfasfqqqqqqqqq
           </ButtonLink>
         </Controls>
       </HeaderPage>
