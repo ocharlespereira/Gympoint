@@ -45,7 +45,7 @@ export default function Header() {
               </Menu>
             </li>
             <li>
-              <Menu activeStyle={{ colors: colors.linkActive }} to="/request">
+              <Menu activeStyle={{ colors: colors.linkActive }} to="/help">
                 PEDIDO DE AUXÍLIO
               </Menu>
             </li>
