@@ -76,19 +76,41 @@ export default function StudentList() {
             {students.total === 0 ? (
               <NoResultFound />
             ) : (
-                <>
-                  <Table>
-                    <Thead>
-                      <Tr>
-                        <Th>NOME</Th>
-                        <Th>EMAIL</Th>
-                        <Th align="center">IDADE</Th>
-                        <Th colSpan="2" />
-                      </Tr>
-                    </Thead>
-                  </Table>
-                </>
-              )}
+                  <>
+                    <Table>
+                      <Thead>
+                        <Tr>
+                          <Th>NOME</Th>
+                          <Th>EMAIL</Th>
+                          <Th align="center">IDADE</Th>
+                          <Th colSpan="2" />
+                        </Tr>
+                      </Thead>
+                    </Table>
+
+                    <Tbody>
+                      {students.data.map(student => (
+                        <Tr key={String(student.id)}>
+                          <Td>{student.name}</Td>
+                          <Td>{student.email}</Td>
+                          <Td align="center">{student.age}</Td>
+                          <Td>
+                            <Link style ={{ color: colors.edit }}
+                            to={`/alunos/${student.id}/edit`} >
+                              editar
+                            </Link>
+                          </Td>
+                          <Td>
+                            <ButtonLikeLink style={{ color: colors.delete }}
+                            onClick={() => handleDelete(student.id)}>
+                              apagar
+                            </ButtonLikeLink>
+                          </Td>
+                        </Tr>
+                      ))}
+                    </Tbody>
+                  </>
+                )};
           </Panel>
         )}
     </Container>
