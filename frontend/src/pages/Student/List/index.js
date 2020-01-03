@@ -86,29 +86,46 @@ export default function StudentList() {
                           <Th colSpan="2" />
                         </Tr>
                       </Thead>
-                    </Table>
 
-                    <Tbody>
-                      {students.data.map(student => (
-                        <Tr key={String(student.id)}>
-                          <Td>{student.name}</Td>
-                          <Td>{student.email}</Td>
-                          <Td align="center">{student.age}</Td>
-                          <Td>
-                            <Link style ={{ color: colors.edit }}
-                            to={`/alunos/${student.id}/edit`} >
-                              editar
-                            </Link>
-                          </Td>
-                          <Td>
-                            <ButtonLikeLink style={{ color: colors.delete }}
-                            onClick={() => handleDelete(student.id)}>
-                              apagar
-                            </ButtonLikeLink>
-                          </Td>
-                        </Tr>
-                      ))}
-                    </Tbody>
+                      <Tbody>
+                        {students.data.map(student => (
+                          <Tr key={String(student.id)}>
+                            <Td>{student.name}</Td>
+                            <Td>{student.email}</Td>
+                            <Td align="center">{student.age}</Td>
+                            <Td>
+                              <Link style ={{ color: colors.edit }}
+                              to={`/alunos/${student.id}/edit`} >
+                                editar
+                              </Link>
+                            </Td>
+                            <Td>
+                              <ButtonLikeLink style={{ color: colors.delete }}
+                              onClick={() => handleDelete(student.id)}>
+                                apagar
+                              </ButtonLikeLink>
+                            </Td>
+                          </Tr>
+                        ))}
+                      </Tbody>
+                    </Table> 
+
+                    <br />
+                    <PaginationInfo
+                      page={students.page}
+                      perPage={students.perPage}
+                      totalPage={students.totalPage}
+                      total={students.total}
+                    />
+                    <br />
+                    {students.totalPage > 1 && (
+                      <Pagination
+                        page={students.page}
+                        totalPage={students.totalPage}
+                        align="center"
+                        onLoadPage={handleLoadPage}
+                      />
+                    )}
                   </>
                 )};
           </Panel>
