@@ -4,5 +4,6 @@ export const HeaderPage = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20px 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
 `;
