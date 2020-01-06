@@ -58,7 +58,7 @@ export default function StudentList() {
       <HeaderPage>
         <Title>Gerenciando Alunos</Title>
         <Controls>
-          <ButtonLink to="/alunos/new">
+          <ButtonLink to="/students/new">
             <MdAdd size={24} color="#FFF" title="Adicionar Novo Aluno" />
             <span>Cadastrar</span>
           </ButtonLink>
@@ -95,7 +95,7 @@ export default function StudentList() {
                             <Td align="center">{student.age}</Td>
                             <Td>
                               <Link style ={{ color: colors.edit }}
-                              to={`/alunos/${student.id}/edit`} >
+                              to={`/students/${student.id}/edit`} >
                                 editar
                               </Link>
                             </Td>
