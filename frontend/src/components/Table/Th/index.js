@@ -2,7 +2,6 @@ import React from 'react';
 import PropsTypes from 'prop-types';
 
 import { CustomTh } from './styles';
-import { CustomTbody } from '../Tbody/styles';
 
 export default function Th({ children, align, ...rest }) {
   return (
