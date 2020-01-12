@@ -1,19 +1,19 @@
 import React from 'react';
 import PropsTypes from 'prop-types';
 
-import { CustomTd  } from './styles';
+import { CustomId } from './styles';
 
 export default function Td({ children, align, ...rest }) {
   return (
-    <CustomTd align={align} {...rest}>
+    <CustomId align={align} {...rest}>
       {children}
-    </CustomTd>
+    </CustomId>
   );
 }
 
 Td.defaultProps = {
   align: 'left',
-}
+};
 
 Td.PropsTypes = {
   children: PropsTypes.oneOfType([
@@ -21,4 +21,4 @@ Td.PropsTypes = {
     PropsTypes.node,
   ]).isRequired,
   align: PropsTypes.string,
-}
+};

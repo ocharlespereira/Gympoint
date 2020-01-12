@@ -76,59 +76,64 @@ export default function StudentList() {
             {students.total === 0 ? (
               <NoResultFound />
             ) : (
-                  <>
-                    <Table>
-                      <Thead>
-                        <Tr>
-                          <Th>NOME</Th>
-                          <Th>EMAIL</Th>
-                          <Th align="center">IDADE</Th>
-                          <Th colSpan="2" />
+                <>
+                  <Table>
+                    <Thead>
+                      <Tr>
+                        <Th>NOME</Th>
+                        <Th>EMAIL</Th>
+                        <Th align="center">IDADE</Th>
+                        <Th colSpan="2" />
+                      </Tr>
+                    </Thead>
+
+                    <Tbody>
+                      {students.data.map(student => (
+                        <Tr key={String(student.id)}>
+                          <Td>{student.name}</Td>
+                          <Td>{student.email}</Td>
+                          <Td align="center">{student.age}</Td>
+                          <Td>
+                            <Link
+                              style={{ color: colors.edit }}
+                              to={`/students/${student.id}/edit`}
+                            >
+                              editar
+                        </Link>
+                          </Td>
+                          <Td>
+                            <ButtonLikeLink
+                              style={{ color: colors.delete }}
+                              onClick={() => handleDelete(student.id)}
+                            >
+                              apagar
+                        </ButtonLikeLink>
+                          </Td>
                         </Tr>
-                      </Thead>
+                      ))}
+                    </Tbody>
+                  </Table>
 
-                      <Tbody>
-                        {students.data.map(student => (
-                          <Tr key={String(student.id)}>
-                            <Td>{student.name}</Td>
-                            <Td>{student.email}</Td>
-                            <Td align="center">{student.age}</Td>
-                            <Td>
-                              <Link style ={{ color: colors.edit }}
-                              to={`/students/${student.id}/edit`} >
-                                editar
-                              </Link>
-                            </Td>
-                            <Td>
-                              <ButtonLikeLink style={{ color: colors.delete }}
-                              onClick={() => handleDelete(student.id)}>
-                                apagar
-                              </ButtonLikeLink>
-                            </Td>
-                          </Tr>
-                        ))}
-                      </Tbody>
-                    </Table> 
-
-                    <br />
-                    <PaginationInfo
+                  <br />
+                  <PaginationInfo
+                    page={students.page}
+                    perPage={students.perPage}
+                    totalPage={students.totalPage}
+                    total={students.total}
+                  />
+                  <br />
+                  {students.totalPage > 1 && (
+                    <Pagination
                       page={students.page}
-                      perPage={students.perPage}
                       totalPage={students.totalPage}
-                      total={students.total}
+                      align="center"
+                      onLoadPage={handleLoadPage}
                     />
-                    <br />
-                    {students.totalPage > 1 && (
-                      <Pagination
-                        page={students.page}
-                        totalPage={students.totalPage}
-                        align="center"
-                        onLoadPage={handleLoadPage}
-                      />
-                    )}
-                  </>
-                )};
-          </Panel>
+                  )}
+                </>
+              )}
+            ;
+        </Panel>
         )}
     </Container>
   );
