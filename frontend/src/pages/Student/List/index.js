@@ -132,8 +132,7 @@ export default function StudentList() {
                   )}
                 </>
               )}
-            ;
-        </Panel>
+          </Panel>
         )}
     </Container>
   );

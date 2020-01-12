@@ -1,5 +1,5 @@
 import React from 'react';
-import propstypes from 'prop-Types';
+import PropsTypes from 'prop-types';
 
 import { CustomTr } from './styles';
 
