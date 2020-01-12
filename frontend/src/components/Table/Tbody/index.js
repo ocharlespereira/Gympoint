@@ -13,7 +13,7 @@ export default function Tbody({ children, align, ...rest }) {
 
 Tbody.defaultProps = {
   align: 'left',
-}
+};
 
 Tbody.PropsTypes = {
   children: PropsTypes.oneOfType([
