@@ -56,7 +56,7 @@ function* updateStudent(data) {
 }
 
 function* saveStudents({ payload }) {
-  const { id } = payload.data;
+  const { id } = payload;
 
   if (id) {
     yield updateStudent(payload.data);

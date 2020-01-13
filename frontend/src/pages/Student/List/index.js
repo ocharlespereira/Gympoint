@@ -34,7 +34,7 @@ export default function StudentList() {
 
   useEffect(() => {
     dispatch(studentsSearchRequest({ name: termSearch, page: 1 }));
-  }, [dispatch, termSearch]);
+  }, []); //eslint-disable-line
 
   function handleSearchMain(value, page = 1) {
     seTermSearch(value);
