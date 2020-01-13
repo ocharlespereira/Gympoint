@@ -13,11 +13,11 @@ import {
 
 function* searchStudents({ payload }) {
   try {
-    const { name, page } = payload.data;
+    const { name, page } = payload;
 
     const response = yield call(api.get, 'students', {
       params: {
-        name: name || '',
+        name: name || '', // se não existir
         page,
       },
     });

@@ -8,7 +8,7 @@ export default function PaginationInfo({ page, perPage, totalPage, total }) {
     <Container>
       <strong>Total: {total}</strong>
       <span>
-        Página: {page}/{totalPage}itens por página: {perPage}
+        Página: {page}/{totalPage} itens por página: {perPage}
       </span>
     </Container>
   );

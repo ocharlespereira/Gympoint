@@ -36,7 +36,7 @@ export default function StudentList() {
     dispatch(studentsSearchRequest({ name: termSearch, page: 1 }));
   }, [dispatch, termSearch]);
 
-  function handleSearcMain(value, page = 1) {
+  function handleSearchMain(value, page = 1) {
     seTermSearch(value);
     dispatch(studentsSearchRequest({ name: value, page }));
   }
@@ -50,7 +50,7 @@ export default function StudentList() {
   }
 
   function handleLoadPage(page) {
-    handleSearcMain(termSearch, page);
+    handleSearchMain(termSearch, page);
   }
 
   return (
@@ -64,7 +64,7 @@ export default function StudentList() {
           </ButtonLink>
 
           <InputSearch
-            handleSearch={handleSearcMain}
+            handleSearch={handleSearchMain}
             placeholder="Buscar Aluno"
           />
         </Controls>
@@ -83,16 +83,20 @@ export default function StudentList() {
                         <Th>NOME</Th>
                         <Th>EMAIL</Th>
                         <Th align="center">IDADE</Th>
+                        <Th align="center">PESO</Th>
+                        <Th align="center">ALTURA</Th>
                         <Th colSpan="2" />
                       </Tr>
                     </Thead>
 
                     <Tbody>
-                      {students.data.map(student => (
+                      {students.map(student => (
                         <Tr key={String(student.id)}>
                           <Td>{student.name}</Td>
                           <Td>{student.email}</Td>
                           <Td align="center">{student.age}</Td>
+                          <Td align="center">{student.weight}</Td>
+                          <Td align="center">{student.height}</Td>
                           <Td>
                             <Link
                               style={{ color: colors.edit }}
@@ -132,8 +136,7 @@ export default function StudentList() {
                   )}
                 </>
               )}
-            ;
-        </Panel>
+          </Panel>
         )}
     </Container>
   );
