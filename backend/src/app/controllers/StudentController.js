@@ -110,6 +110,17 @@ class StudentController {
       heigth,
     });
   }
+
+  async delete(req, res) {
+
+    const student = await Student.findByPk(req.params.id, {
+      attributes: ['id', 'name', 'email'],
+    });
+
+    await student.destroy();
+
+    return res.json(student);
+  }
 }
 
 export default new StudentController();

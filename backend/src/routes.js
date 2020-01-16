@@ -39,12 +39,13 @@ routes.use(authMiddleware);
 // User
 routes.get('/users', UserController.index);
 routes.post('/users', UserController.store);
-routes.put('/users', UserController.update);
+routes.put('/users/:id', UserController.update);
 
 // Student
 routes.get('/students', StudentController.index);
-routes.post('/create', StudentController.store);
+routes.post('/students', StudentController.store);
 routes.put('/students/:id', StudentController.update);
+routes.delete('/students/:id', StudentController.delete);
 
 // File Image
 routes.post('/files', upload.single('file'), FileController.store);
