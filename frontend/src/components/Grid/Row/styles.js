@@ -5,6 +5,7 @@ export const CustomRow = styled.div`
   height: auto;
   float: left;
   box-sizing: border-box;
+
   &:before,
   &:after {
     content: ' ';

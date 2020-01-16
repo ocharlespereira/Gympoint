@@ -4,6 +4,7 @@ function getWidthGrid(value) {
   if (!value) return;
 
   const width = (value / 12) * 100;
+  // eslint-disable-next-line consistent-return
   return `width: ${width}%;`;
 }
 
