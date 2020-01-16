@@ -33,4 +33,29 @@ const schema = Yup.object().shape({
   weight: Yup.number().required('O peso é obrigatório.'),
   height: Yup.number().required('A altura é obrigatória.'),
 });
-export default function StudentForm() { }
+export default function StudentForm() {
+  const { id } = useParams();
+  const [student, setStudent] = useState({});
+  const dispatch = useDispatch();
+
+  function handleSubmit(data) {
+    dispatch(studentsSaveRequest({ ...data, id }));
+  }
+
+  useEffect(() => {
+    if (id) {
+      async function loadStudent() {
+        const response = await api.get(`student/${id}`);
+        setStudent(response.data);
+      }
+
+      loadStudent();
+    }
+  }, [id]);
+
+  return (
+    <Container>
+      <HeaderPage />
+    </Container>
+  );
+}
