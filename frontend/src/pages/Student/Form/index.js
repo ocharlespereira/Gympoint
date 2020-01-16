@@ -11,7 +11,7 @@ import { Container, Row, Column } from '~/components/Grid';
 import Title from '~/components/Title';
 import { HeaderPage } from '~/components/HeaderPage/styles';
 import { Controls } from '~/components/Controls/styles';
-import ButtonLink from '~/components/Button';
+import ButtonLink from '~/components/ButtonLink';
 import Button from '~/components/Button';
 import { Panel } from '~/components/Panel/styles';
 import { FormGroup } from '~/components/FormGroup/styles';
@@ -29,9 +29,15 @@ const schema = Yup.object().shape({
     .required('O e-mail é obrigatório.'),
   age: Yup.number()
     .min(0, 'A idade deve ser maior ou igual a 0')
-    .required('A idade é obrigatória.'),
-  weight: Yup.number().required('O peso é obrigatório.'),
-  height: Yup.number().required('A altura é obrigatória.'),
+    .required('A idade é obrigatória.')
+    .typeError('A idade é obrigatória.'),
+  weight: Yup.number()
+    .required('O peso é obrigatório.')
+    .nullable(true)
+    .typeError('O peso é obrigatório.'),
+  height: Yup.number()
+    .required('A altura é obrigatória.')
+    .typeError('A altura é obrigatória.'), // trata error NaN
 });
 export default function StudentForm() {
   const { id } = useParams();
@@ -44,6 +50,7 @@ export default function StudentForm() {
 
   useEffect(() => {
     if (id) {
+      // eslint-disable-next-line no-inner-declarations
       async function loadStudent() {
         const response = await api.get(`students/${id}`);
         setStudent(response.data);
@@ -83,11 +90,38 @@ export default function StudentForm() {
           <Input name="name" placeholder="Digite seu nome completo" />
 
           <Label>E-MAIL</Label>
-          <Input name="email" placeholder="Digite seu endereço de e-mail" />
+          <Input
+            name="email"
+            type="email"
+            placeholder="Digite seu endereço de e-mail"
+          />
           <Row>
             <Column mobile="12" desktop="4">
               <FormGroup>
                 <Label>IDADE</Label>
+                <Input type="number" name="age" placeholder="Sua Idade" />
+              </FormGroup>
+            </Column>
+            <Column mobile="12" desktop="4">
+              <FormGroup>
+                <Label>PESO (em Kg)</Label>
+                <Input
+                  step="0.01"
+                  type="number"
+                  name="weight"
+                  placeholder="Seu Peso"
+                />
+              </FormGroup>
+            </Column>
+            <Column mobile="12" desktop="4">
+              <FormGroup>
+                <Label>ALTURA</Label>
+                <Input
+                  step="0.01"
+                  type="number"
+                  name="height"
+                  placeholder="Sua Altura"
+                />
               </FormGroup>
             </Column>
           </Row>
