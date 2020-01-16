@@ -1,7 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { Form } from '@rocketseat/unform';
+import { MdArrowBack, MdDone } from 'react-icons/md';
+import * as Yup from 'yup';
 
-// import { Container } from './styles';
+import colors from '~/styles/colors';
 
-export default function StudentForm() {
-  return <div />;
-}
+import { Container, Row, Column } from '~/components/Grid';
+import Title from '~/components/Title';
+import { HeaderPage } from '~/components/HeaderPage/styles';
+import { Controls } from '~/components/Controls/styles';
+import ButtonLink from '~/components/Button';
+import Button from '~/components/Button';
+import { Painel } from '~/components/Panel/styles';
+import { FormGroup } from '~/components/FormGroup/styles';
+
+import Input from '~/components/Input';
+import Label from '~/components/Label';
+
+import { studentsSaveRequest } from '~/store/modules/student/actions';
+import api from '~/services/api';
+
+const schema = Yup.object().shape({
+  name: Yup.string().required('Nome é obrigatório.'),
+  email: Yup.string()
+    .email('Insira um e-mail válido.')
+    .required('O e-mail é obrigatório.'),
+  age: Yup.number()
+    .min(0, 'A idade deve ser maior ou igual a 0')
+    .required('A idade é obrigatória.'),
+  weight: Yup.number().required('O peso é obrigatório.'),
+  height: Yup.number().required('A altura é obrigatória.'),
+});
+export default function StudentForm() { }
