@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-// import { Container } from './styles';
+import { CustomInput } from './styles';
 
-export default class Input extends Component {
-  render() {
-    return <div />;
-  }
+export default function Input({ ...rest }) {
+  // eslint-disable-next-line react/jsx-props-no-spreading
+  return <CustomInput {...rest} />;
 }
