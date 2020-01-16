@@ -13,7 +13,7 @@ import { HeaderPage } from '~/components/HeaderPage/styles';
 import { Controls } from '~/components/Controls/styles';
 import ButtonLink from '~/components/Button';
 import Button from '~/components/Button';
-import { Painel } from '~/components/Panel/styles';
+import { Panel } from '~/components/Panel/styles';
 import { FormGroup } from '~/components/FormGroup/styles';
 
 import Input from '~/components/Input';
@@ -45,7 +45,7 @@ export default function StudentForm() {
   useEffect(() => {
     if (id) {
       async function loadStudent() {
-        const response = await api.get(`student/${id}`);
+        const response = await api.get(`students/${id}`);
         setStudent(response.data);
       }
 
@@ -55,7 +55,44 @@ export default function StudentForm() {
 
   return (
     <Container>
-      <HeaderPage />
+      <HeaderPage>
+        <Title>{id > 0 ? 'Edição de aluno' : 'Cadastro de aluno'}</Title>
+        <Controls>
+          <ButtonLink to="/students" color={colors.second}>
+            <MdArrowBack size={24} color="#fff" />
+            <span>Voltar</span>
+          </ButtonLink>
+          <Button
+            type="submit"
+            label="Salvar"
+            icon={<MdDone size={24} color="#fff" />}
+            form="formStudent"
+          />
+        </Controls>
+      </HeaderPage>
+
+      <Panel>
+        <Form
+          id="formStudent"
+          initialData={student}
+          schema={schema}
+          onSubmit={handleSubmit}
+        >
+          <Input name="id" type="hidden" />
+          <Label>NOME COMPLETO</Label>
+          <Input name="name" placeholder="Digite seu nome completo" />
+
+          <Label>E-MAIL</Label>
+          <Input name="email" placeholder="Digite seu endereço de e-mail" />
+          <Row>
+            <Column mobile="12" desktop="4">
+              <FormGroup>
+                <Label>IDADE</Label>
+              </FormGroup>
+            </Column>
+          </Row>
+        </Form>
+      </Panel>
     </Container>
   );
 }
