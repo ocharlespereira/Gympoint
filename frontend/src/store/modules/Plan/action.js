@@ -25,6 +25,19 @@ export function plansSaveSuccess(data) {
     payload: { data },
   };
 }
+export function plansAddRequest(data) {
+  return {
+    type: '@plan/PLAN_ADD_REQUEST',
+    payload: { data },
+  };
+}
+
+export function plansAddSuccess(data) {
+  return {
+    type: '@plan/PLAN_ADD_SUCCESS',
+    payload: { data },
+  };
+}
 
 export function plansDeleteRequest(id) {
   return {

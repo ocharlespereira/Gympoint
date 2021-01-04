@@ -33,54 +33,54 @@ function* seachPlans({ payload }) {
     toast.error('Erro ao pesquisar planos.');
     yield put(plansFailure());
   }
-
-  function* addPlan(data) {
-    try {
-      const dataFormatted = { ...data, price: formatCurrency(data.price) };
-
-      const response = yield call(api.post, 'plans', dataFormatted);
-
-      toast.success('Plano cadastrado com sucesso');
-      yield put(plansSaveSuccess(response.data));
-
-      history.push('/plans');
-    } catch (error) {
-      toast.error('Erro cadastrar aluno!');
-      yield put(plansFailure());
-    }
-  }
-
-  function* updatePlan(data) {
-    try {
-      const dataFormatted = { ...data, price: formatCurrency(data.price) };
-      const res = yield call(api.put, `plans/${dataFormatted}`, dataFormatted);
-
-      toast.success('Plano Atualizado com sucesso.');
-      yield put(plansSaveSuccess(res.data));
-    } catch (error) {
-      toast.error('Erro atualizar aluno!');
-      yield put(plansFailure());
-
-    }
-  }
-
-  function* deletePlan({ payload }) {
-    try {
-      const { id } = payload;
-
-      yield call(api.delete, `plans/${id}`);
-
-      toast.success('Plano removido com sucesso');
-      yield put(plansDeleteSuccess(id));
-    } catch (error) {
-      toast.error('Erro remover planos.');
-      yield put(plansFailure());
-    }
-  }
-
-  export default all([
-    takeLatest('@plan/PLAN_SEARCH_REQUEST', searchPlans),
-    takeLatest('@plan/PLAN_SAVE_REQUEST', savePlan),
-    takeLatest('@plan/PLAN_DELETE_REQUEST', deletePlan),
-  ]);
 }
+
+function* addPlan(data) {
+  try {
+    const dataFormatted = { ...data, price: formatCurrency(data.price) };
+
+    const response = yield call(api.post, 'plans', dataFormatted);
+
+    toast.success('Plano cadastrado com sucesso');
+    yield put(plansSaveSuccess(response.data));
+
+    history.push('/plans');
+  } catch (error) {
+    toast.error('Erro cadastrar aluno!');
+    yield put(plansFailure());
+  }
+}
+
+function* updatePlan(data) {
+  try {
+    const dataFormatted = { ...data, price: formatCurrency(data.price) };
+    const res = yield call(api.put, `plans/${dataFormatted}`, dataFormatted);
+
+    toast.success('Plano Atualizado com sucesso.');
+    yield put(plansSaveSuccess(res.data));
+  } catch (error) {
+    toast.error('Erro atualizar aluno!');
+    yield put(plansFailure());
+  }
+}
+
+function* deletePlan({ payload }) {
+  try {
+    const { id } = payload;
+
+    yield call(api.delete, `plans/${id}`);
+
+    toast.success('Plano removido com sucesso');
+    yield put(plansDeleteSuccess(id));
+  } catch (error) {
+    toast.error('Erro remover planos.');
+    yield put(plansFailure());
+  }
+}
+
+export default all([
+  takeLatest('@plan/PLAN_SEARCH_REQUEST', seachPlans),
+  takeLatest('@plan/PLAN_SAVE_REQUEST', updatePlan),
+  takeLatest('@plan/PLAN_ADD_REQUEST', addPlan),
+  takeLatest('@plan/PLAN_DELETE_REQUEST', deletePlan),
+]);

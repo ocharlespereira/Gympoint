@@ -36,6 +36,16 @@ export default function plan(state = INITIAL_STATE, action) {
         draft.loading = false;
         break;
       }
+      case '@plan/PLAN_ADD_REQUEST': {
+        draft.loading = true;
+        break;
+      }
+
+      case '@plan/PLAN_ADD_SUCCESS': {
+        draft.plan = action.payload.data;
+        draft.loading = false;
+        break;
+      }
 
       case '@plan/PLAN_DELETE_REQUEST': {
         draft.loading = true;
